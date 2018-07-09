@@ -1,0 +1,2 @@
+js引擎的运行机制，分为：执行栈和队列，js代码都在栈中执行。当执行栈空闲时，会从队列中拿出事件一个个循环执行
+详细参考：http://www.cnblogs.com/dong-xu/p/7000163.html，http://www.cnblogs.com/dong-xu/p/7000139.html两篇文章
