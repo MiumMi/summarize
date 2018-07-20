@@ -1,17 +1,18 @@
 class BaseMethods {
+  // 排序
   sort (list, key, type) {
     type = type || 'desc'
     return type === 'desc' ? this.sortDesc(list, key) : this.sortAsc(list, key)
   }
-
+  // 降序
   sortDesc (list, key) {
     return list.sort((a, b) => (b[key] - a[key]).slice(0))
   }
-
+  // 升序
   sortAsc (list, key) {
     return list.sort((a, b) => (a[key] - b[key]).slice(0))
   }
-
+  
   // 本地化资产数据
   assetsChange (target, replaceStr) {
     target = Number(target)
@@ -54,10 +55,13 @@ class BaseMethods {
   }
 
   // 保留了几位小数
-  fixedNum(num, decimal, str) {
-    var num = Number(num)
+  fixedNum(numStr, decimal, str) {
+    var num = Number(numStr)
     var str = str || ''
-    if (!num || Object.is(num, NaN)) {
+    if (Object.is(num, NaN)) {
+      return numStr
+    }
+    if (!num) {
       return '0.'.padEnd(decimal * 1 + 2, 0) + str
     }
     return num.toFixed(decimal) + str

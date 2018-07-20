@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # wsummarize
 
 > A Vue.js project
@@ -20,6 +19,3 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-=======
-# summarize
->>>>>>> 0a3a052b113beccb2a996037396b27f6cc27cb95
