@@ -4,7 +4,9 @@
 /* eslint no-undef: "error" */
 import App from './App'
 import router from './router'
+import app from '@/lib/app'
 
+Vue.prototype.$app = app
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -1,6 +1,6 @@
 /* global Vue VueRouter */
 /* eslint no-undef: "error" */
-import HelloWorld from '@/components/HelloWorld'
+import test from '@/page/test'
 
 Vue.use(VueRouter)
 
@@ -8,8 +8,8 @@ export default new VueRouter({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'test',
+      component: test
     }
   ]
 })

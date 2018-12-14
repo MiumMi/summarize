@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*
  * @Author: li 
  * @Date: 2017-11-30 14:05:50 
@@ -11,7 +12,11 @@ class Native {
     }
 
     setScheme (scheme) {
-        this.scheme = Object.assign({}, scheme)
+        // this.scheme = Object.assign({}, scheme)
+        this.scheme = {
+            'getAccountFromApp': 'android'
+            // 'goFundDetail': 'common'
+        }
     }
 
     ua() {
@@ -66,8 +71,10 @@ class Native {
     on(type, func) {
         this.platform = this.ua()
         if (this.platform === 'android') {
-            window['JSInterface'][type] = func
+            console.log('on', type)
+            window[type] = func
         } else if (this.platform === 'ios') {
+            console.log('on', type)
             this.connectWebViewJavascriptBridge((bridge) => {
                 bridge.registerHandler(type, func)
             });
@@ -75,17 +82,21 @@ class Native {
     }
     
     emit(type, params, callback) {
-        const category = this.scheme[type]
+        // const category = this.scheme[type]
         if (typeof params === 'function') {
             callback = params
             params = undefined
         }
         // this.platform = 'ios'
         if (this.platform === 'android') {
-            if (!window[category]) return
-            let res = params ? window[category][type](JSON.stringify(params)) : window[category][type]()
+            console.log('emit', type)
+            // if (!window[category]) return
+            // let res = params ? window[category][type](JSON.stringify(params)) : window[type]()
+            let res = window['android'][type]()
+            console.log('andriod', res)
             callback && callback(typeof res === 'string' ? JSON.parse(res): res)
         } else if (this.platform === 'ios') {
+            console.log('emit', type)
             this.connectWebViewJavascriptBridge((bridge) => {
                 bridge.callHandler(type, params,(response) => { callback && callback(response) })
             })
